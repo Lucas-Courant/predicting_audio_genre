@@ -24,7 +24,7 @@ The biggest limitation for this project is that genre is a subjective concept. T
 Data was pulled from the [free music archive](https://github.com/mdeff/fma) github. For the audio files I pulled the 'small' subset and worked with that. This dataset came with summary statistics on audio features that were created by the authors of the free music archive.
 
 - Audio Features
- - chroma energy normalized chroma
+  - chroma energy normalized chroma
  - constant q transform chroma
  - short time fourier transform chroma
  - mel frequency cepstral coefficients
