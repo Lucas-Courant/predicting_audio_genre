@@ -60,6 +60,17 @@ First models were trained using all 518 feature statistics provided. The baselin
 
 Logistic regression was the most promising at this stage. I began to model based on the statistics of one audio feature at a time. Logistic regression on the mfcc statistics yielded the highest accuracy with the least overfitting. The testing accuracy was 52.2% and the training accuracy was 53.8%. Based on these results I extracted the mfccs from the audio data I had and built a convolutional neural network which was trained on them. The mfccs were visualized as spectrograms and saved as .png files. The neural network that performed the best was a convolutional neural network with the following architecture.
 
+![sequential convolutional](./images/conv2d_sequential.png)
+
+Though this model is the best of the neural networks I have so far it is far less accurate than the logistic regression with an accuracy only in the mid 30's on both training and testing data.
+
+## Conclusions
+The mel frequency cepstral coefficients are a promising avenue for future projects that attempt to understand music in ways that are similar to how people understand it.
 
 ## Next Steps
-I am currently working and building a multi input neural network that can accept multiple audio feature matrices as inputs.
+- Current Focus
+  - Tweak architecture of sequential neural network to improve accuracy
+  - build multi input neural network
+
+- Future Steps
+  - Use unsupervised learning to cluster songs rather than rely on genres provided
