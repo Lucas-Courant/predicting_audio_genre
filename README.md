@@ -23,35 +23,43 @@ The biggest limitation for this project is that genre is a subjective concept. T
 ### Precomputed Data
 Data was pulled from the [free music archive](https://github.com/mdeff/fma) github. For the audio files I pulled the 'small' subset and worked with that. This dataset came with summary statistics on audio features that were created by the authors of the free music archive.
 
-- Audio Features
- - chroma energy normalized chroma
- - constant q transform chroma
- - short time fourier transform chroma
- - mel frequency cepstral coefficients
- - root mean squared energy
- - spectral bandwidth
- - spectral centroids
- - spectral rolloff
- - tonnetz
- - zero crossing rate
+- **Audio Features**
+  - chroma energy normalized chroma
+  - constant q transform chroma
+  - short time fourier transform chroma
+  - mel frequency cepstral coefficients
+  - root mean squared energy
+  - spectral bandwidth
+  - spectral centroids
+  - spectral rolloff
+  - tonnetz
+  - zero crossing rate
 
 For each of these audio features the following statistics were provided
 
-- Statistics
- - kurtosis
- - maximum value
- - mean
- - median
- - minimum value
- - skew
- - standard deviation
+- **Statistics**
+  - kurtosis
+  - maximum value
+  - mean
+  - median
+  - minimum value
+  - skew
+  - standard deviation
  
 
 ### Feature Extraction from mp3 Files
 Because the mfccs gave the highest accuracy I decided to focus on extracting these first from the mp3 files. I extracted them both as they come from the librosa method and as a .png file with pixel values. Genre was taken from the metadata that was provided.
 
 ## Modeling
-Numerous models were tried. Logistic regression performed the best by far on the summary statistics provided. The features I extracted were so many that a neural network was the only model that made sense.
+First models were trained using all 518 feature statistics provided. The baseline accuracy is 12.5%
+
+|Model|Random Forest|Gradient Boost|ADA Boost|Logistic Regression|KNN|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|Test Score|42.4%|48.2%|42.3%|57.7%|46.8%|
+|Train Score|44.8%|54.5%|44.0%|66.6%|65.1%|
+
+Logistic regression was the most promising at this stage. I began to model based on the statistics of one audio feature at a time. Logistic regression on the mfcc statistics yielded the highest accuracy with the least overfitting. The testing accuracy was 52.2% and the training accuracy was 53.8%. Based on these results I extracted the mfccs from the audio data I had and built a convolutional neural network which was trained on them. The mfccs were visualized as spectrograms and saved as .png files. The neural network that performed the best was a convolutional neural network with the following architecture.
+
 
 ## Next Steps
 I am currently working and building a multi input neural network that can accept multiple audio feature matrices as inputs.
