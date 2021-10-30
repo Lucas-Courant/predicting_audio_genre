@@ -56,7 +56,7 @@ First models were trained using all 518 feature statistics provided. The baselin
 |Test Score|42.4%|48.2%|42.3%|57.7%|46.8%|
 |Train Score|44.8%|54.5%|44.0%|66.6%|65.1%|
 
-Logistic regression was the most promising at this stage. I began to model based on the statistics of one audio feature at a time. Logistic regression on the mfcc statistics yielded the highest accuracy with the least overfitting. The testing accuracy was 52.2% and the training accuracy was 53.8%. Based on these results I extracted the mfccs from the audio data I had and built a convolutional neural network which was trained on them. The mfccs were visualized as spectrograms and saved as .png files. The neural network that performed the best was a convolutional neural network with the following architecture.
+Logistic regression was the most promising at this stage. I began to model based on the statistics of one audio feature at a time. Logistic regression on the mfcc statistics yielded the highest accuracy with the least overfitting. The testing accuracy was 57.7% and the training accuracy was 66.6%. Based on these results I extracted the mfccs from the audio data I had and built a convolutional neural network which was trained on them. The mfccs were visualized as spectrograms and saved as .png files. The neural network that performed the best was a convolutional neural network with the following architecture.
 
 ![sequential convolutional](./images/conv2d_sequential.png)
 
